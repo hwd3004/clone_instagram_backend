@@ -101,3 +101,7 @@ import bcrypt from 'bcrypt'
 yarn prisma studio
 
     로컬:5555포트에서 패스워드가 해쉬 암호화가 잘되었는지 확인 가능
+
+---
+
+# 4.3 seeProfile

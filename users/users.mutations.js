@@ -10,31 +10,35 @@ export default {
     ) => {
       // check if username or email are already on DB.
       // findFirst는 조건에 맞는 첫번째 사용자를 리턴함
-      const existingUser = await client.user.findFirst({
-        where: {
-          OR: [
-            {
-              username,
-            },
-            {
-              email,
-            },
-          ],
-        },
-      })
-      console.log(existingUser)
-
-      const uglyPassword = await bcrypt.hash(password, 10)
-
-      return client.user.create({
-        data: {
-          username,
-          email,
-          firstName,
-          lastName,
-          password: uglyPassword,
-        },
-      })
+      try {
+        const existingUser = await client.user.findFirst({
+          where: {
+            OR: [
+              {
+                username,
+              },
+              {
+                email,
+              },
+            ],
+          },
+        })
+        if (existingUser) {
+          throw new Error('This username/password is already taken.')
+        }
+        const uglyPassword = await bcrypt.hash(password, 10)
+        return client.user.create({
+          data: {
+            username,
+            email,
+            firstName,
+            lastName,
+            password: uglyPassword,
+          },
+        })
+      } catch (e) {
+        return e
+      }
     },
   },
 }

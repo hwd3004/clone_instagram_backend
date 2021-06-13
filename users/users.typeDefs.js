@@ -1,6 +1,6 @@
 import { gql } from 'apollo-server'
 
-// graphql에서는 password를 작성 할 필요 없다
+// graphql의 type User에서는 password를 작성 할 필요 없다
 export default gql`
   type User {
     id: Int!
