@@ -127,3 +127,7 @@ password generator 웹사이트에서 SECRET_KEY 생성
 ---
 
 # 4.7 updateProfile
+
+---
+
+# 4.8 authentication part One
