@@ -38,8 +38,6 @@ yarn add @prisma/client
 
 # 2. Create Account part One
 
-
-
 /prisma/schema.prisma
 
 ```
@@ -66,3 +64,6 @@ model User {
 
     Enter a name for the new migration:은 user_model
 
+---
+
+# 3. Create Account part One
