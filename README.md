@@ -113,3 +113,9 @@ yarn prisma studio
 yarn add jsonwebtoken
 
     설치만 해놓음
+
+---
+
+# 4.5 login Part Two and Refactor
+
+password generator 웹사이트에서 SECRET_KEY 생성
