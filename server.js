@@ -1,14 +1,16 @@
 require('dotenv').config()
 import { ApolloServer } from 'apollo-server'
 import schema from './schema'
+import { getUser } from './users/users.utils'
 
 const PORT = process.env.PORT
 
 const server = new ApolloServer({
   schema,
-  context: {
-    token:
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiaWF0IjoxNjIzNjAwNDQ1fQ.TH110awK0e5iq3KnBxCvShyIJRRG02yGegTQC41kEq8',
+  context: async ({ req }) => {
+    return {
+      loggedInUser: await getUser(req.headers.token),
+    }
   },
 })
 
