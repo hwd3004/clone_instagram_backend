@@ -105,3 +105,11 @@ yarn prisma studio
 ---
 
 # 4.3 seeProfile
+
+---
+
+# 4.4 login
+
+yarn add jsonwebtoken
+
+    설치만 해놓음

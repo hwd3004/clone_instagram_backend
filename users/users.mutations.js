@@ -40,5 +40,25 @@ export default {
         return e
       }
     },
+
+    login: async (_, { username, password }) => {
+      const user = await client.user.findFirst({ where: { username } })
+      if (!user) {
+        return {
+          ok: false,
+          error: 'User not found.',
+        }
+      }
+
+      // bcrypt.compare(data, encrypted)
+      // 사용자가 입력한 패스워드를 bcrypt가 데이터베이스에 있는 해쉬 패스워드와 비교한다
+      const passwordOk = await bcrypt.compare(password, user.password)
+      if (!passwordOk) {
+        return {
+          ok: false,
+          error: 'Incorrect password.',
+        }
+      }
+    },
   },
 }
