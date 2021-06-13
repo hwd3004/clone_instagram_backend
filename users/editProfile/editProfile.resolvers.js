@@ -6,7 +6,10 @@ export default {
   Mutation: {
     editProfile: async (
       _,
-      { firstName, lastName, username, email, password: newPassword, token },
+      { firstName, lastName, username, email, password: newPassword },
+
+      // server.js / const server 안에 있는 context 안에 있는 token
+      { token },
     ) => {
       // jwt.verify(token, secretOrPublicKey)
       // 유저가 준 토큰과 시크릿 키를 이용하여 해독된 토큰을 리턴함
