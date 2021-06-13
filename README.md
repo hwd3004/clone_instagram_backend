@@ -36,7 +36,7 @@ yarn add @prisma/client
 
 ---
 
-# 2. Create Account part One
+# 4.0 Create Account part One
 
 /prisma/schema.prisma
 
@@ -66,4 +66,38 @@ model User {
 
 ---
 
-# 3. Create Account part One
+# 4.1 Create Account part Two
+
+---
+
+# 4.2 Create Account part Three
+
+패스워드 해쉬 작업
+
+yarn add bcrypt
+
+    설치 시 에러가 떴는데, yarn-error.log에 operation permit error라고 되어있어서, 파워쉘을 관리자 권한으로 실행하여서 설치하였다.
+
+users.mutations.js
+
+```
+...
+import bcrypt from 'bcrypt'
+....
+      const uglyPassword = await bcrypt.hash(password, 10)
+
+      return client.user.create({
+        data: {
+          username,
+          email,
+          firstName,
+          lastName,
+          password: uglyPassword,
+        },
+      })
+...
+```
+
+yarn prisma studio
+
+    로컬:5555포트에서 패스워드가 해쉬 암호화가 잘되었는지 확인 가능
