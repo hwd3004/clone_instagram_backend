@@ -210,3 +210,44 @@ yarn prisma migrate dev
 이름은 bio_avatar
 
 prisma studio 재실행
+
+---
+
+# 4.15 File Upload part Two
+
+파일 업로드 테스트를 위한 altair graphql client 설치
+
+altair에서
+
+```
+mutation($bio: String, $avatar: Upload){
+  editProfile(bio: $bio, avatar: $avatar){
+    ok
+    error
+  }
+}
+```
+
+editProfile.resolvers.js에서
+
+```
+const resolverFn = async (...) => {
+    ...
+    console.log(avatar)
+    ...
+}
+...
+```
+
+콘솔창을 확인해보면
+
+```
+Promise {
+  {
+    filename: '20200825_002352.jpg',
+    mimetype: 'image/jpeg',
+    encoding: '7bit',
+    createReadStream: [Function: createReadStream]
+  }
+}
+```
