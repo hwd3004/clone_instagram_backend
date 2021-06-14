@@ -9,6 +9,12 @@ export default {
         where: {
           username,
         },
+
+        // prisma에서는 배열을 검색하려면 include를 써야한다
+        include: {
+          following: true,
+          followers: true,
+        },
       }),
   },
 }

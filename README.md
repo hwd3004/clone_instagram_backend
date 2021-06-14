@@ -381,3 +381,7 @@ yarn prisma studio
 ---
 
 # 4.21 Following User
+
+---
+
+# 4.22 Unfollow User and See Followers
