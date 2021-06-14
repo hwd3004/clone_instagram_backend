@@ -1,5 +1,7 @@
 require('dotenv').config()
-import { ApolloServer } from 'apollo-server'
+import express from 'express'
+import logger from 'morgan'
+import { ApolloServer } from 'apollo-server-express'
 import { resolvers, typeDefs } from './schema'
 import { getUser } from './users/users.utils'
 
@@ -15,6 +17,14 @@ const server = new ApolloServer({
   },
 })
 
-server
-  .listen(PORT)
-  .then(() => console.log(`Server is running on http://localhost:${PORT}`))
+const app = express()
+
+// morgan은 nodeJS에서 사용되는 로그 관리를 위한 미들웨어
+app.use(logger('tiny'))
+
+// apollo 서버에 express 서버를 줌
+server.applyMiddleware({ app })
+
+app.listen({ port: PORT }, () => {
+  console.log(`Server is running on http://localhost:${PORT}`)
+})

@@ -334,3 +334,25 @@ const resolverFn = async (
   ...
 
 ```
+
+---
+
+# 4.18 Ejecting from Apollo Server
+
+yarn add express apollo-server-express
+
+에러 발생
+
+    error An unexpected error ouccured: "EPERM: operation not permitted
+
+    http://flummox-engineering.blogspot.com/2019/01/yarn-on-windows-file-read-only-error-eperm-operation-not-permitted-open.html
+
+    node_modules 폴더의 속성에 읽기 전용을 체크 해제 후 설치
+
+    그래도 안되서 node_moudles 폴더 삭제 후 yarn install
+
+    이후에 yarn add express apollo-server-express 해주니 잘되었다
+
+yarn add morgan
+
+graphql 플레이그라운드에 접속하려면 로컬:4000/graphql로 해야한다

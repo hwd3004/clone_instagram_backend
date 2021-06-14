@@ -6,7 +6,7 @@ import client from '../../client'
 import { protectedResolver } from '../users.utils'
 
 // node.js 명령어로, 호출한 프로젝트 디렉토리의 절대경로를 알려줌
-console.log(process.cwd())
+// console.log(process.cwd())
 
 const resolverFn = async (
   _,
