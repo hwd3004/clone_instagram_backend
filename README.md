@@ -360,3 +360,20 @@ graphql 플레이그라운드에 접속하려면 로컬:4000/graphql로 해야�
 ---
 
 # 4.19 Changing Avatar
+
+---
+
+# 4.20 Followers part One
+
+/prisma/schema.prisma
+
+```
+...
+followers User[] @relation("FollowRelation", references: [id])
+following User[] @relation("FollowRelation", references: [id])
+...
+```
+
+yarn prisma migrate dev
+
+yarn prisma studio
