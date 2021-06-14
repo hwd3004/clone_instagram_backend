@@ -7,7 +7,7 @@ import { getUser } from './users/users.utils'
 
 const PORT = process.env.PORT
 
-const server = new ApolloServer({
+const apollo = new ApolloServer({
   resolvers,
   typeDefs,
   context: async ({ req }) => {
@@ -23,7 +23,10 @@ const app = express()
 app.use(logger('tiny'))
 
 // apollo 서버에 express 서버를 줌
-server.applyMiddleware({ app })
+// applyMiddleware는 logger 다음에 작성해야함
+apollo.applyMiddleware({ app })
+
+app.use('/static', express.static('uploads'))
 
 app.listen({ port: PORT }, () => {
   console.log(`Server is running on http://localhost:${PORT}`)

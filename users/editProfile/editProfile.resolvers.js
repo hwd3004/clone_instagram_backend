@@ -13,15 +13,27 @@ const resolverFn = async (
   { firstName, lastName, username, email, password: newPassword, bio, avatar },
   { loggedInUser },
 ) => {
-  const { filename, createReadStream } = await avatar
+  let avatarUrl = null
 
-  // 모든 파일을 변수 readStream에 받음
-  const readStream = createReadStream()
+  if (avatar) {
+    const { filename, createReadStream } = await avatar
 
-  // uploads 폴더에 파일을 생성할 수 있지만, graphql 서버는
-  // graphql만 담당하므로 apollo-server-express가 필요
-  const writeStream = createWriteStream(process.cwd() + '/uploads/' + filename)
-  readStream.pipe(writeStream)
+    // 파일 이름 중복 방지
+    const newFilename = `${loggedInUser.id}_${Date.now()}_${filename}`
+
+    // 모든 파일을 변수 readStream에 받음
+    const readStream = createReadStream()
+
+    // uploads 폴더에 파일을 생성할 수 있지만, graphql 서버는
+    // graphql만 담당하므로 apollo-server-express가 필요
+    const writeStream = createWriteStream(
+      process.cwd() + '/uploads/' + newFilename,
+    )
+
+    readStream.pipe(writeStream)
+
+    avatarUrl = `http://localhost:4000/static/${newFilename}`
+  }
 
   let uglyPassword = null
   if (newPassword) {
@@ -38,6 +50,7 @@ const resolverFn = async (
       email,
       bio,
       ...(uglyPassword && { password: uglyPassword }),
+      ...(avatarUrl && { avatar: avatarUrl }),
     },
   })
   if (updatedUser.id) {

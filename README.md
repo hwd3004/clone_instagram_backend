@@ -356,3 +356,7 @@ yarn add express apollo-server-express
 yarn add morgan
 
 graphql 플레이그라운드에 접속하려면 로컬:4000/graphql로 해야한다
+
+---
+
+# 4.19 Changing Avatar
