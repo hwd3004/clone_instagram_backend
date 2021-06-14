@@ -251,3 +251,55 @@ Promise {
   }
 }
 ```
+
+---
+
+# 4.16 File Upload part Three
+
+1. 포트 4000이 이미 사용되고 있다는 에러가 뜨면,
+
+   nodemon이 서버를 새로 시작하려고 했는데 이전 프로세스가 죽지 않은 경우이다
+
+   package.json을 수정하면 된다
+
+   ```
+   "scripts": {
+       "start": "nodemon --exec babel-node server.js --delay 2s"
+   },
+   ```
+
+2. alitair에서 파일 업로드 테스티 "Maximum call stack size exceeded" 에러가 생길 수 있다
+
+   yarn을 사용 중인 경우에는
+
+   package.json에 추가
+
+   ```
+   ...
+   "resolutions": {
+   "**/**/fs-capacitor": "^6.2.0",
+   "**/graphql-upload": "^11.0.0"
+   }
+   ...
+   ```
+
+   npm 사용시 package.json에 추가
+
+   ```
+   ...
+   "resolutions": {
+       "fs-capacitor": "^6.2.0",
+       "graphql-upload": "^11.0.0"
+   }
+   ...
+   ```
+
+   package.json의 scripts 부분에
+
+   ```
+   "scripts": {
+       "preinstall": "npx npm-force-resoulutions",
+   }
+   ```
+
+   node_moudles 폴더를 지우고 npm install
