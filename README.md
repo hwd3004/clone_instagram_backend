@@ -184,3 +184,29 @@ function x(resolver){
 ```
 
 # 4.13 Recap
+
+---
+
+# 4.14 File Upload part One
+
+/prisma/schema.prisma
+
+```
+model User {
+    ...
+    bio    String?
+    avatar String?
+}
+```
+
+users/editProfile/editProfile.resolvers.js에 bio 추가
+
+users/editProfile/editProfile.typeDefs.js에 bio: String 추가
+
+users/users.typeDefs.js에 bio: String avatar: String 추가
+
+yarn prisma migrate dev
+
+이름은 bio_avatar
+
+prisma studio 재실행
