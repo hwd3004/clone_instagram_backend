@@ -182,3 +182,5 @@ function x(resolver){
 }
 
 ```
+
+# 4.13 Recap
