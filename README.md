@@ -377,3 +377,7 @@ following User[] @relation("FollowRelation", references: [id])
 yarn prisma migrate dev
 
 yarn prisma studio
+
+---
+
+# 4.21 Following User
