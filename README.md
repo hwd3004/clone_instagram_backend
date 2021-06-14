@@ -143,3 +143,42 @@ password generator 웹사이트에서 SECRET_KEY 생성
 ---
 
 # 4.11 Protecting Resolvers part One
+
+---
+
+# 4.12 Protecting Resolvers part Two
+
+```
+<!-- x 변수는 resolver 함수를 받는다 -->
+const x = (resolver)
+
+<!-- resolver 함수는 다른 함수(graphql resolver가 가진 값들을 받음)를 리턴할 것이다 -->
+const x = (resolver) => (root, args, context, info) => {}
+
+
+const x = (resolver) => (root, args, context, info) => {
+    <!-- 유저가 로그인한 상태 체크 -->
+    if(!context.loggedInUser){
+        return {
+            ok: false,
+            error: "log in please"
+        }
+    }
+
+    <!-- graphql resolver와 같은 argument를 가진 함수 리턴 -->
+    return resolver(root, args, context, info)
+}
+
+<!-- 예전 문법 -->
+function x(resolver){
+    return function(root, args, context, info){
+        if(!context.loggedInUser){
+            return {
+                ok: false,
+                error: "log in please"
+            }
+        }
+    }
+}
+
+```
