@@ -139,3 +139,7 @@ password generator 웹사이트에서 SECRET_KEY 생성
 ---
 
 # 4.10 authentication part Three
+
+---
+
+# 4.11 Protecting Resolvers part One

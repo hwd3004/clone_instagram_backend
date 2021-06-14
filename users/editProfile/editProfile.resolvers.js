@@ -6,12 +6,11 @@ export default {
   Mutation: {
     editProfile: async (
       _,
+      // server.js / const server / schema, context
       { firstName, lastName, username, email, password: newPassword },
-
-      // server.js / const server 안에 있는 context 안에 있는 token
-      { loggedInUser },
+      { loggedInUser, protectResolver },
     ) => {
-      console.log(loggedInUser)
+      protectResolver(loggedInUser)
 
       let uglyPassword = null
       if (newPassword) {
