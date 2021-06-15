@@ -403,3 +403,13 @@ https://www.prisma.io/docs/concepts/components/prisma-client/pagination
 Offset pagination의 장점 - 어떤 페이지로든 갈 수 있다
 
 단점 - 만약 20만개의 아이템을 스킵하고 10개의 아이템을 가지고 오려면, 데이터베이스는 20만개의 데이터를 가져와야 한다
+
+---
+
+# 4.25 Following Pagination
+
+https://www.prisma.io/docs/concepts/components/prisma-client/pagination
+
+cursor-based pagination의 장점 - 규모가 용이하게 커질 수 있다, 무제한 스크롤 페이지 필요할 때 좋다
+
+단점 - 특정 페이지로 바로 이동하는 것은 어렵다
