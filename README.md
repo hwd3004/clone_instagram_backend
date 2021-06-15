@@ -427,3 +427,7 @@ fields이고 매번 리퀘스트를 받을 때마다 계산이 된다
 # 4.27 Computed Fields part Two
 
 인스타그램은 eventual consistency 방식을 사용하여 팔로우 계산을 한다
+
+---
+
+# 4.28 Computed Fields part Three
