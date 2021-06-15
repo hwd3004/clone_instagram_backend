@@ -441,3 +441,13 @@ fields이고 매번 리퀘스트를 받을 때마다 계산이 된다
 # 4.29 코드 챌린지
 
 searchUsers에 페이지네이션 추가하기
+
+---
+
+# 6.0 Photos Model
+
+prettier-plugin-prisma 노드 패키지가 프리즈마 자동 생성을 도와주나, 난 현재 작동하지 않는다
+
+없는 상태에서 alt + shitft + f를 하니 hashtag 모델 관련해선 자동 생성되지만 수정해주어야 한다
+
+schema.prisma 작업 후 yarn prisma migrate dev

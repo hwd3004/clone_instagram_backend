@@ -24,9 +24,49 @@ model User {
   bio    String?
   avatar String?
 
+  // 한 명의 유저가 여러 개의 사진을 가질 수 있어야하므로 Photo 모델 배열 추가
+  photos Photo[]
+
   followers User[] @relation("FollowRelation", references: [id])
   following User[] @relation("FollowRelation", references: [id])
 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Photo {
+  id Int @id @default(autoincrement())
+
+  // 1. 사진은 유저에 의해 업로드 될 것이므로 User 추가
+  // 2. User 모델의 photos Photo[]와 Photo 모델의 user User는 실제 데이터베이스에 저장되지 않는다
+  //    단지 Prisma와 Prisma Client가, 우리가 뭘 하는지 알기 위해서 있는 것이다
+  //    실제 데이터베이스 저장되는 것은 userId이다
+  //    Photo에서 Prisma는 기본적으로 userId를 저장할 것이다
+  //    user User의 @relation() 코드가, 사진을 생성하거나 필터링 할 때
+  //    Prisma가 사진과 유저의 관계를 파악할 수 있다
+  // 3. user User의 코드 해석 - User와 Phtoto 관계를 명시
+  //    fields는 userId로 불리는 관계를 가지고 있고, userId는 User의 id를 가지고 있다
+  // 4. 새로운 사진을 저장할 때, 데이터베이스에는 photos와 user 자체가 저장되는게 아니라 userId를 갖게 되고,
+  //    대신에 Photo 모델 안에 userId라는 필드가 User의 id 값을 지니도록 했으니까
+  //    어떤 유저의 사진들을 요청할 때, Prisma가 그 유저의 사진들을 불러올 수 있음
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+
+  file     String
+
+  // 선택 항목
+  caption  String?
+  
+  hashtags Hashtag[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Hashtag {
+  id        Int      @id @default(autoincrement())
+  hashtag   String
+  photos    Photo[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
