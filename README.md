@@ -451,3 +451,19 @@ prettier-plugin-prisma 노드 패키지가 프리즈마 자동 생성을 도와�
 없는 상태에서 alt + shitft + f를 하니 hashtag 모델 관련해선 자동 생성되지만 수정해주어야 한다
 
 schema.prisma 작업 후 yarn prisma migrate dev
+
+---
+
+# 6.1 Prisma Fields vs SQL Fields
+
+1. prisma studio에서 photo를 보면 id, user, userId, file, caption, hashtags, createdAt, updatedAt이 있다
+
+    pgAdmin4 - Databases - instaclone - Schemas - Tables - Photo - Columns를 보면
+
+    id, userId, file, caption, createdAt, updatedAt만 있다
+
+    데이터베이스에 저장되지 않고 Prisma가 자동으로 관리하게 된다
+
+2. User 모델 안에 followers와 following이 있지만, 실제 User 데이터베이스에 존재하지 않고,
+
+    _FollowRelation 테이블에 따로 관리된다
