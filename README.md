@@ -421,3 +421,9 @@ cursor-based pagination의 장점 - 규모가 용이하게 커질 수 있다, �
 컴퓨티드 필드란 graphql 스키마로 채워져있지만, 데이터베이스에는 없는 것을 말한다
 
 fields이고 매번 리퀘스트를 받을 때마다 계산이 된다
+
+---
+
+# 4.27 Computed Fields part Two
+
+인스타그램은 eventual consistency 방식을 사용하여 팔로우 계산을 한다
