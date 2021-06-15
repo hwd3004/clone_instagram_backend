@@ -385,3 +385,11 @@ yarn prisma studio
 ---
 
 # 4.22 Unfollow User and See Followers
+
+---
+
+# 4.23 Followers Pagination part One
+
+https://www.prisma.io/docs/concepts/components/prisma-client/pagination
+
+Offeset pagination과 Cursor-based pagination이 있다
