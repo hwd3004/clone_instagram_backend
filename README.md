@@ -413,3 +413,11 @@ https://www.prisma.io/docs/concepts/components/prisma-client/pagination
 cursor-based pagination의 장점 - 규모가 용이하게 커질 수 있다, 무제한 스크롤 페이지 필요할 때 좋다
 
 단점 - 특정 페이지로 바로 이동하는 것은 어렵다
+
+---
+
+# 4.26 Computed Fields part One
+
+컴퓨티드 필드란 graphql 스키마로 채워져있지만, 데이터베이스에는 없는 것을 말한다
+
+fields이고 매번 리퀘스트를 받을 때마다 계산이 된다
