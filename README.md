@@ -502,3 +502,7 @@ const user = await prisma.profile.create({
 ```
 
 where에 있는 email 'alice@prisma.io'가 존재하지 않는다면, 이 메일 주소로 유저를 새로 만든다
+
+---
+
+# 6.4 Upload Photo part Three
