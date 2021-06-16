@@ -467,3 +467,7 @@ schema.prisma 작업 후 yarn prisma migrate dev
 2. User 모델 안에 followers와 following이 있지만, 실제 User 데이터베이스에 존재하지 않고,
 
     _FollowRelation 테이블에 따로 관리된다
+
+---
+
+# 6.2 Upload Photo part One
