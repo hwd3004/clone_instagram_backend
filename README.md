@@ -458,16 +458,47 @@ schema.prisma 작업 후 yarn prisma migrate dev
 
 1. prisma studio에서 photo를 보면 id, user, userId, file, caption, hashtags, createdAt, updatedAt이 있다
 
-    pgAdmin4 - Databases - instaclone - Schemas - Tables - Photo - Columns를 보면
+   pgAdmin4 - Databases - instaclone - Schemas - Tables - Photo - Columns를 보면
 
-    id, userId, file, caption, createdAt, updatedAt만 있다
+   id, userId, file, caption, createdAt, updatedAt만 있다
 
-    데이터베이스에 저장되지 않고 Prisma가 자동으로 관리하게 된다
+   데이터베이스에 저장되지 않고 Prisma가 자동으로 관리하게 된다
 
 2. User 모델 안에 followers와 following이 있지만, 실제 User 데이터베이스에 존재하지 않고,
 
-    _FollowRelation 테이블에 따로 관리된다
+   \_FollowRelation 테이블에 따로 관리된다
 
 ---
 
 # 6.2 Upload Photo part One
+
+---
+
+# 6.3 Upload Photo part Two
+
+Hashtag 모델 수정 후 yarn prisma migrate dev
+
+https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#examples-26
+
+prisma 기능 - connectOrCreate
+
+relationship을 connect하는게 가능하다
+
+기존 요소들을 연결시키거나, 존재하지 않으면 새로운 요소를 추가하는 기능이다
+
+필드값이 unique해야하면 사용할 수 있다
+
+```
+const user = await prisma.profile.create({
+  data: {
+    bio: 'The coolest Alice on the planet',
+    user: {
+      connectOrCreate: {
+        where:  { email: 'alice@prisma.io' },
+        create: { email: 'alice@prisma.io'}
+    },
+  },
+})
+```
+
+where에 있는 email 'alice@prisma.io'가 존재하지 않는다면, 이 메일 주소로 유저를 새로 만든다

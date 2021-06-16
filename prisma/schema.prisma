@@ -52,11 +52,11 @@ model Photo {
   user   User @relation(fields: [userId], references: [id])
   userId Int
 
-  file     String
+  file String
 
   // 선택 항목
-  caption  String?
-  
+  caption String?
+
   hashtags Hashtag[]
 
   createdAt DateTime @default(now())
@@ -64,8 +64,11 @@ model Photo {
 }
 
 model Hashtag {
-  id        Int      @id @default(autoincrement())
-  hashtag   String
+  id Int @id @default(autoincrement())
+
+  // 같은 해시태그가 있으면 안되니 unique 필요
+  hashtag String @unique
+
   photos    Photo[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
