@@ -506,3 +506,7 @@ where에 있는 email 'alice@prisma.io'가 존재하지 않는다면, 이 메일
 ---
 
 # 6.4 Upload Photo part Three
+
+---
+
+# 6.5 seePhoto
