@@ -510,3 +510,26 @@ where에 있는 email 'alice@prisma.io'가 존재하지 않는다면, 이 메일
 ---
 
 # 6.5 seePhoto
+
+---
+
+# 6.6 seeHashtag
+
+필드에도 argument를 보낼 수 있다
+
+```
+query{
+  seeHashtag(hashtag: "#food"){
+    id
+    hashtag
+    photos(page: 1){
+      id
+    }
+    totalPhotos
+    createdAt
+    updatedAt
+  }
+}
+```
+
+public 쿼리 내 특정 필드만 protect도 가능하다
