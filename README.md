@@ -557,3 +557,7 @@ compund unique
 @@unique를 사용하게 되면, unqiue constraint라는 걸 만들게 되는데,
 
 두 가지 필드를 동시에 unique로 설정할 수 있다
+
+---
+
+# 6.10 Like Unlike Photos part Two
