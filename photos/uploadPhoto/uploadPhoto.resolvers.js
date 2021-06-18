@@ -1,5 +1,6 @@
 import client from '../../client'
 import { protectedResolver } from '../../users/users.utils'
+import { processHashtags } from '../photos.utils'
 
 export default {
   Mutation: {
@@ -12,19 +13,7 @@ export default {
           // caption이 존재한다면 parsing 작업을 해야함
           // I love #food 같은 캡션에 있는 문장 안의 해시태그 키워드들만 추출해야함
           // 해당 해쉬태그를 create하게 하고, 이미 있다면 get하게 함
-
-          // 정규표현식(Regular Expression) 사용
-          // 패턴을 통해 String 내에 있는 특정 String을 추출
-          // # -> 해쉬 기호, [\w] -> 텍스트의 마지막 character까지 이어지는 문자의 집합
-          // 영어만 하려면 /#[\w]+/g
-          const hashtags = caption.match(/#[ㄱ-ㅎ|ㅏ-ㅣ|가-힣\w]+/g)
-          // console.log(hashtags)
-
-          hashtagObj = hashtags.map((hashtag) => ({
-            where: { hashtag },
-            create: { hashtag },
-          }))
-          console.log(hashtagObj)
+          hashtagObj = processHashtags(caption)
         }
 
         // 파싱된 해쉬태그에와 홤께 사진 저장

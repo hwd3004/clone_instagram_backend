@@ -537,3 +537,7 @@ public 쿼리 내 특정 필드만 protect도 가능하다
 ---
 
 # 6.7 editPhoto part One
+
+---
+
+# 6.8 editPhoto part Two
