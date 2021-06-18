@@ -561,3 +561,37 @@ compund unique
 ---
 
 # 6.10 Like Unlike Photos part Two
+
+---
+
+# 6.11 seeLikes
+
+prisma에서 select와 include의 차이
+
+include는 결과에 relationship을 추가
+
+select는 받고 싶은 데이터를 선택
+
+```
+export default {
+  Query: {
+    seePhotoLikes: async (_, { id }) => {
+      const likes = await client.like.findMany({
+        where: {
+          photoId: id,
+        },
+        select: {
+          user: true,
+        },
+      })
+      console.log(likes)
+      return likes.map((like) => like.user)
+    },
+  },
+}
+```
+
+consoloe.log(likes)를 하면, Like 오브젝트의 다른 것들은 받아오지 않는다
+
+select를 include로 하면 Like의 id, createdAt 등등 모든 데이터를 받고 user도 incldue한다
+
