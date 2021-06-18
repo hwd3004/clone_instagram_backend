@@ -32,6 +32,8 @@ model User {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  likes Like[]
 }
 
 model Photo {
@@ -61,6 +63,8 @@ model Photo {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  likes Like[]
 }
 
 model Hashtag {
@@ -72,4 +76,20 @@ model Hashtag {
   photos    Photo[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Like {
+  id        Int      @id @default(autoincrement())
+  photo     Photo    @relation(fields: [photoId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+  photoId   Int
+  userId    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // 유저가 똑같은 사진에 좋아요를 한 번 이상 못누르게 해야함
+  // userId와 photoId는 중복될 수 없음
+  // 데이터베이스에 중복된 Like는 저장되지 않음
+  // userId와 photoId가 중복된 경우, DB에 저장되지 않도록 허가해주지 않음
+  @@unique([photoId, userId])
 }

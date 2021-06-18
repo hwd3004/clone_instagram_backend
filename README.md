@@ -541,3 +541,19 @@ public 쿼리 내 특정 필드만 protect도 가능하다
 ---
 
 # 6.8 editPhoto part Two
+
+---
+
+# 6.9 Like Unlike Photos
+
+https://www.prisma.io/docs/concepts/components/prisma-schema/data-model#defining-a-unique-field
+
+@@unique
+
+compund unique
+
+여러 필드들의 복합체, 이 기능을 사용하면 복합 unique를 설정할 수 있게 해줌
+
+@@unique를 사용하게 되면, unqiue constraint라는 걸 만들게 되는데,
+
+두 가지 필드를 동시에 unique로 설정할 수 있다
