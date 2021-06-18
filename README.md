@@ -595,3 +595,6 @@ consoloe.log(likes)를 하면, Like 오브젝트의 다른 것들은 받아오�
 
 select를 include로 하면 Like의 id, createdAt 등등 모든 데이터를 받고 user도 incldue한다
 
+---
+
+# 6.12 seeFeed
