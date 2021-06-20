@@ -682,3 +682,7 @@ aws s3 관련 부분 스킵
 # 7.1 Models
 
 Direct Messages Models
+
+---
+
+# 7.2 seeRooms
