@@ -610,3 +610,52 @@ select를 include로 하면 Like의 id, createdAt 등등 모든 데이터를 받
 ---
 
 # 6.15 isMine
+
+---
+
+# 6.16 Delete Comment and Photos
+
+https://nomadcoders.co/instaclone/lectures/2473 댓글 참고
+
+게시물을 삭제하면서 해당 게시물에 달려있던 좋아요와 코멘트 삭제하려면, 게시물을 삭제하기 전에 좋아요와 코멘트를 먼저 삭제해야 한다
+
+```javascript
+const deleteComment = await client.comment.deleteMany({
+  where: {
+    photoId: args.photoId,
+  },
+})
+const likeDelete = await client.like.deleteMany({
+  where: {
+    photoId: args.photoId,
+  },
+})
+```
+
+해쉬태그 삭제
+
+```javascript
+//아래와 같이 끝내고 싶지만 photoId는 유니크가 아니므로 패쓰..
+await client.photo.update({where:{id:1},data:{hashs:{disconnect:{photoId:1}}}})
+
+//지울 hashid 골라내기
+const hashIds = photo.hashs.map((hash) => ({ id: hash.id }));
+
+//해쉬 디스커넥
+await client.photo.update({
+where: { id },
+data: { hashs: { disconnect: hashIds } },
+});
+
+//포토 없는 해쉬 골라내기
+const noPhotos = hashIds.filter(async (hashId) => {
+const hash = await client.hash.findFirst({
+where: { id: hashId.id },
+select: { photos: { select: { id: true } } },
+});
+return hash.photos.length === 0;
+});
+
+//그리고 해쉬 지우기
+await client.hash.deleteMany({ where: { OR: noPhotos } });
+```
