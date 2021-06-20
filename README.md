@@ -602,3 +602,7 @@ select를 include로 하면 Like의 id, createdAt 등등 모든 데이터를 받
 ---
 
 # 6.13 Comment on Photos
+
+---
+
+# 6.14 See Photo Comments
