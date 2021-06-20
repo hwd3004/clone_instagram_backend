@@ -636,31 +636,37 @@ const likeDelete = await client.like.deleteMany({
 
 ```javascript
 //아래와 같이 끝내고 싶지만 photoId는 유니크가 아니므로 패쓰..
-await client.photo.update({where:{id:1},data:{hashs:{disconnect:{photoId:1}}}})
+await client.photo.update({
+  where: { id: 1 },
+  data: { hashs: { disconnect: { photoId: 1 } } },
+})
 
 //지울 hashid 골라내기
-const hashIds = photo.hashs.map((hash) => ({ id: hash.id }));
+const hashIds = photo.hashs.map((hash) => ({ id: hash.id }))
 
 //해쉬 디스커넥
 await client.photo.update({
-where: { id },
-data: { hashs: { disconnect: hashIds } },
-});
+  where: { id },
+  data: { hashs: { disconnect: hashIds } },
+})
 
 //포토 없는 해쉬 골라내기
 const noPhotos = hashIds.filter(async (hashId) => {
-const hash = await client.hash.findFirst({
-where: { id: hashId.id },
-select: { photos: { select: { id: true } } },
-});
-return hash.photos.length === 0;
-});
+  const hash = await client.hash.findFirst({
+    where: { id: hashId.id },
+    select: { photos: { select: { id: true } } },
+  })
+  return hash.photos.length === 0
+})
 
 //그리고 해쉬 지우기
-await client.hash.deleteMany({ where: { OR: noPhotos } });
+await client.hash.deleteMany({ where: { OR: noPhotos } })
 ```
 
 ---
 
 # 6.17 editComment
 
+---
+
+# 6.18 protectedResolver Refactor

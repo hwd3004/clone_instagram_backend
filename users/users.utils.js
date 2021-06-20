@@ -20,10 +20,16 @@ export const getUser = async (token) => {
 
 export function protectedResolver(ourResolver) {
   return function (root, args, context, info) {
+    // info는 서버에서 어떤 작동이 일어나는지에 대한 모든 정보를 알려줌
     if (!context.loggedInUser) {
-      return {
-        ok: false,
-        error: 'Please log in to perform this action.',
+      const query = info.operation.operation === 'query'
+      if (query) {
+        return null
+      } else {
+        return {
+          ok: false,
+          error: 'Please log in to perform this action.',
+        }
       }
     }
     return ourResolver(root, args, context, info)
