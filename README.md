@@ -670,3 +670,15 @@ await client.hash.deleteMany({ where: { OR: noPhotos } })
 ---
 
 # 6.18 protectedResolver Refactor
+
+---
+
+# 6.19 6.20 6.211
+
+aws s3 관련 부분 스킵
+
+---
+
+# 7.1 Models
+
+Direct Messages Models

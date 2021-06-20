@@ -33,8 +33,11 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  likes   Like[]
+  likes    Like[]
   comments Comment[]
+
+  rooms   Room[]
+  Message Message[]
 }
 
 model Photo {
@@ -65,7 +68,7 @@ model Photo {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  likes   Like[]
+  likes    Like[]
   comments Comment[]
 }
 
@@ -105,4 +108,23 @@ model Comment {
   updatedAt DateTime @updatedAt
   userId    Int
   photoId   Int
+}
+
+model Room {
+  id        Int       @id @default(autoincrement())
+  users     User[]
+  message   Message[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Message {
+  id        Int      @id @default(autoincrement())
+  payload   String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  room      Room     @relation(fields: [roomId], references: [id])
+  roomId    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
