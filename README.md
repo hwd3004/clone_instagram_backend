@@ -659,3 +659,8 @@ return hash.photos.length === 0;
 //그리고 해쉬 지우기
 await client.hash.deleteMany({ where: { OR: noPhotos } });
 ```
+
+---
+
+# 6.17 editComment
+
