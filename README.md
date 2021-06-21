@@ -686,3 +686,7 @@ Direct Messages Models
 ---
 
 # 7.2 seeRooms
+
+---
+
+# 7.3 sendMessage
