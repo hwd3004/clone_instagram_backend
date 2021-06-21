@@ -4,6 +4,7 @@ import logger from 'morgan'
 import { ApolloServer } from 'apollo-server-express'
 import { resolvers, typeDefs } from './schema'
 import { getUser } from './users/users.utils'
+import pubsub from './pubsub'
 
 const PORT = process.env.PORT
 
@@ -18,6 +19,8 @@ const apollo = new ApolloServer({
 })
 
 const app = express()
+
+apollo.installSubscriptionHandlers(app)
 
 // morgan은 nodeJS에서 사용되는 로그 관리를 위한 미들웨어
 app.use(logger('tiny'))

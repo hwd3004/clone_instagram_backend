@@ -702,3 +702,13 @@ Direct Messages Models
 ---
 
 # 7.6 Super Test
+
+---
+
+# 7.7 Subscriptions Setup part One
+
+https://www.apollographql.com/docs/apollo-server/data/subscriptions/
+
+서버에 있는 것이 무엇이든 항상 들을(listen) 수 있도록 해줌
+
+실시간이고 웹소켓에 기반하고 있음
