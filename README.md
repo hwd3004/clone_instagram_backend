@@ -691,6 +691,10 @@ Direct Messages Models
 
 # 7.3 sendMessage
 
-===
+---
 
 # 7.4 seeRoom
+
+---
+
+# 7.5 readMessage
