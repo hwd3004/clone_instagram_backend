@@ -719,3 +719,6 @@ https://www.apollographql.com/docs/apollo-server/data/subscriptions/
 
 서버가 생성된 방식을 바꿔야한다
 
+---
+
+# 7.9 Filtering Subscriptions part One
