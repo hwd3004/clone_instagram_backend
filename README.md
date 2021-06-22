@@ -722,3 +722,7 @@ https://www.apollographql.com/docs/apollo-server/data/subscriptions/
 ---
 
 # 7.9 Filtering Subscriptions part One
+
+---
+
+# 7.10 Filtering Subscriptions part Two
