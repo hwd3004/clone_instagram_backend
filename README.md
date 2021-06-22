@@ -726,3 +726,7 @@ https://www.apollographql.com/docs/apollo-server/data/subscriptions/
 ---
 
 # 7.10 Filtering Subscriptions part Two
+
+---
+
+# 7.11 Authenticating Subscriptions
