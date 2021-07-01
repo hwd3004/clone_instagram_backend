@@ -730,3 +730,19 @@ https://www.apollographql.com/docs/apollo-server/data/subscriptions/
 ---
 
 # 7.11 Authenticating Subscriptions
+
+---
+
+# 파일 경로 수정, 오류 수정
+
+src 폴더를 만들어서 그 안에 js 파일들을 옮겨줌
+
+package.json 수정
+
+```json
+  "scripts": {
+    "start": "nodemon --exec babel-node src/server.js --delay 2s"
+  },
+```
+
+src/server.js 오류 수정, 500 에러가 떴었음

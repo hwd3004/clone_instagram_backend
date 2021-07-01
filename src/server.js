@@ -11,33 +11,35 @@ const PORT = process.env.PORT
 const apollo = new ApolloServer({
   resolvers,
   typeDefs,
+  // context: async (ctx)...으로 바꿔주면서 밑에 부분들도
+  // ctx.req로 바꿔줘야하는데, 그대로 req.headers...으로 냅뒀더니
+  // Received status code 500 Error 오류가 떴다
   context: async (ctx) => {
     if (ctx.req) {
       return {
         loggedInUser: await getUser(ctx.req.headers.token),
-      };
+      }
     } else {
       const {
         connection: { context },
-      } = ctx;
+      } = ctx
       return {
         loggedInUser: context.loggedInUser,
-      };
+      }
     }
   },
   subscriptions: {
     onConnect: async ({ token }) => {
       if (!token) {
-        throw new Error("You can't listen.");
+        throw new Error("You can't listen.")
       }
-      const loggedInUser = await getUser(token);
+      const loggedInUser = await getUser(token)
       return {
         loggedInUser,
-      };
+      }
     },
   },
-});
-
+})
 
 const app = express()
 
