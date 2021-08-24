@@ -746,3 +746,7 @@ package.json 수정
 ```
 
 src/server.js 오류 수정, 500 에러가 떴었음
+
+---
+
+# front - 11.1 Header part Two 에서 백엔드 코드 추가
