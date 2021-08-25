@@ -754,3 +754,7 @@ src/server.js 오류 수정, 500 에러가 떴었음
 ---
 
 # front - 11.6 isLiked 에서 백엔드 코드 추가
+
+---
+
+# front - 11.11 Comments part One 에서 백엔드 코드 추가
